@@ -1,0 +1,78 @@
+--[[
+
+Computercraft API (ACYNO) Acyno's API
+API used for some of my Apps and my OS
+
+]]--
+
+function clear()
+    term.setTextColor(colors.white)
+    term.setCursorPos(1,1)
+    term.clear()
+end
+
+local xPosLoad = 1;
+local yPosLoad = 1;
+local loadPercent = 0;
+local load = 0;
+
+function loadSetPos(x, y)
+    xPosLoad = x;
+    yPosLoad = y;
+end
+
+function loadBar(loadedPercent)
+    term.setCursorPos(xPosLoad, yPosLoad)
+    write("[----------]")
+    if (loadedPercent <= 10) then
+        term.setCursorPos(xPosLoad, yPosLoad)
+        write("[=---------]")
+    elseif (loadedPercent <= 20) then
+        term.setCursorPos(xPosLoad, yPosLoad)
+        write("[==--------]")
+    elseif (loadedPercent <= 30) then
+        term.setCursorPos(xPosLoad, yPosLoad)
+        write("[===-------]")
+    elseif (loadedPercent <= 40) then
+        term.setCursorPos(xPosLoad, yPosLoad)
+        write("[====------]")
+    elseif (loadedPercent <= 50) then
+        term.setCursorPos(xPosLoad, yPosLoad)
+        write("[=====-----]")
+    elseif (loadedPercent <= 60) then
+        term.setCursorPos(xPosLoad, yPosLoad)
+        write("[======----]")
+    elseif (loadedPercent <= 70) then
+        term.setCursorPos(xPosLoad, yPosLoad)
+        write("[=======---]")
+    elseif (loadedPercent <= 80) then
+        term.setCursorPos(xPosLoad, yPosLoad)
+        write("[========--]")
+    elseif (loadedPercent <= 90) then
+        term.setCursorPos(xPosLoad, yPosLoad)
+        write("[=========-]")
+    elseif (loadedPercent == 100) then
+        term.setCursorPos(xPosLoad, yPosLoad)
+        write("[==========]")
+    else
+        term.setCursorPos(xPosLoad, yPosLoad)
+        write("Large Load!")
+    end
+end
+
+function loadAdd(load)
+    if load < 100 then
+        loadPercent = loadPercent + load
+    elseif (load > 100) then
+        write "This is a Percent. It may not be over 100"
+        loadPercent = 0
+    end    
+    loadBar(load);
+end
+
+os.loadAPI("AcynoAPI")
+    term.clear();
+    term.setCursorPos(17, 9);
+write("Acyno API Loaded");
+sleep(0.5);
+clear();
