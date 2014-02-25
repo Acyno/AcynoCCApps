@@ -11,6 +11,12 @@ the latest version of my API and that App together
 
 ==================
 
+Changelogs
+
+http://acyno.com/publ/computercraft/2
+
+==================
+
 If you download the zip-master for the Apps,
 
 to Install the .file to computers, first you have
