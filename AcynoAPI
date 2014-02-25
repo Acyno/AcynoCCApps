@@ -16,7 +16,7 @@ local yPosLoad = 1;
 local loadPercent = 0;
 local load = 0;
 
-function loadSetPos(x, y)
+function setLoadPos(x, y)
     xPosLoad = x;
     yPosLoad = y;
 end
@@ -68,6 +68,45 @@ function loadAdd(load)
         loadPercent = 0
     end    
     loadBar(load);
+end
+
+local password
+
+function passwordReturn(x, y, pass)
+	password = pass
+		term.clear()
+		term.setCursorPos(x, y)
+	write("Enter Password")
+	term.setCursorPos((x + 3), (y + 1))
+	enterPass = io.read()
+	if enterPass == pass then
+		return true
+	else
+		return false
+	end
+end
+
+function passwordScreen(px, py, ppass)
+	while true do
+		if passwordReturn(px, py, ppass) then
+			clear()
+			term.setCursorPos(px, py)
+			write("Enter Password")
+				term.setCursorPos((px + 3), (py + 1))
+				term.setTextColor(colors.green)
+			write("Correct!")
+				term.setTextColor(colors.white)
+				sleep(0.5)
+			clear()
+			break
+		else
+			term.setCursorPos((px + 3), (py + 1))
+			term.setTextColor(colors.red)
+			write("Incorrect")
+			term.setTextColor(colors.white)
+			sleep(3)
+		end
+	end
 end
 
 os.loadAPI("AcynoAPI")
