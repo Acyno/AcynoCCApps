@@ -1,0 +1,65 @@
+--[[
+
+Computercraft App (ACYNO) Event Finder
+Displays any Fired Events
+Acyno API required
+
+]]--
+
+local outputPass = true
+
+AcynoAPI.clear();
+
+textutils.slowPrint("Acyno's Event Finder")
+  sleep(0.3)
+write(" Alt to Clear Screen")
+  sleep(0.3)
+print(", X to Exit")
+print(" ")
+
+function clear()
+  AcynoAPI.clear();
+  print("Acyno's Event Finder")
+  print(" Alt to Clear Screen, X to Exit")
+  print(" ")
+end
+
+while true do
+  local pulledEvent, param1, param2, param3, param4, param5 = os.pullEvent()
+
+  if param1 == 45 then
+  	sleep(0.1)
+    AcynoAPI.clear();
+    break
+  end
+
+  if param1 == 56 then
+    outputPass = false
+    AcynoAPI.clear();
+  end
+
+  if outputPass == true then
+    print("Event = "..pulledEvent)
+
+    print("Parameter 1 = "..param1)
+
+    if param2 ~= nil then
+      print("Parameter 2 = "..param2)
+    end
+
+    if param3 ~= nil then
+      print("Parameter 3 = "..param3)
+    end
+
+    if param4 ~= nil then
+      print("Parameter 4 = "..param4)
+    end
+
+    if param5 ~= nil then
+      print("Parameter 5 = "..param5)
+    end
+    print(" ")
+  end
+
+  outputPass = true
+end
